@@ -43,10 +43,16 @@
             this.showBoard = new System.Windows.Forms.DataGridViewButtonColumn();
             this.stationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.connectionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.conectionBoard = new System.Windows.Forms.DataGridView();
-            this.stationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.Von = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReiseZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AbfahrtsZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AnkunftsZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toTextBox = new System.Windows.Forms.TextBox();
             this.fromTextBox = new System.Windows.Forms.TextBox();
+            this.stationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.transportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl.SuspendLayout();
             this.stationTab.SuspendLayout();
@@ -195,6 +201,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.connectionDateTimePicker);
             this.tabPage2.Controls.Add(this.conectionBoard);
             this.tabPage2.Controls.Add(this.toTextBox);
             this.tabPage2.Controls.Add(this.fromTextBox);
@@ -206,21 +213,78 @@
             this.tabPage2.Text = "VerbindungsSuche";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // connectionDateTimePicker
+            // 
+            this.connectionDateTimePicker.CausesValidation = false;
+            this.connectionDateTimePicker.Checked = false;
+            this.connectionDateTimePicker.CustomFormat = "HH:mm dd.MM.yy";
+            this.connectionDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.connectionDateTimePicker.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.connectionDateTimePicker.Location = new System.Drawing.Point(218, 6);
+            this.connectionDateTimePicker.Name = "connectionDateTimePicker";
+            this.connectionDateTimePicker.ShowCheckBox = true;
+            this.connectionDateTimePicker.ShowUpDown = true;
+            this.connectionDateTimePicker.Size = new System.Drawing.Size(200, 23);
+            this.connectionDateTimePicker.TabIndex = 3;
+            this.connectionDateTimePicker.Value = new System.DateTime(2022, 4, 13, 0, 0, 0, 0);
+            // 
             // conectionBoard
             // 
             this.conectionBoard.AllowUserToAddRows = false;
             this.conectionBoard.AllowUserToDeleteRows = false;
             this.conectionBoard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.conectionBoard.Location = new System.Drawing.Point(3, 35);
+            this.conectionBoard.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Von,
+            this.Nach,
+            this.ReiseZeit,
+            this.AbfahrtsZeit,
+            this.AnkunftsZeit});
+            this.conectionBoard.Location = new System.Drawing.Point(6, 38);
             this.conectionBoard.Name = "conectionBoard";
             this.conectionBoard.ReadOnly = true;
             this.conectionBoard.RowTemplate.Height = 25;
-            this.conectionBoard.Size = new System.Drawing.Size(600, 373);
+            this.conectionBoard.Size = new System.Drawing.Size(594, 373);
             this.conectionBoard.TabIndex = 2;
             // 
-            // stationBindingSource1
+            // Von
             // 
-            this.stationBindingSource1.DataSource = typeof(SwissTransport.Models.Station);
+            this.Von.DataPropertyName = "FromWithPlatform";
+            this.Von.HeaderText = "Von";
+            this.Von.Name = "Von";
+            this.Von.ReadOnly = true;
+            this.Von.Width = 110;
+            // 
+            // Nach
+            // 
+            this.Nach.DataPropertyName = "ToWithPlatform";
+            this.Nach.HeaderText = "Nach";
+            this.Nach.Name = "Nach";
+            this.Nach.ReadOnly = true;
+            this.Nach.Width = 110;
+            // 
+            // ReiseZeit
+            // 
+            this.ReiseZeit.DataPropertyName = "TravelTime";
+            this.ReiseZeit.HeaderText = "Reise Zeit";
+            this.ReiseZeit.Name = "ReiseZeit";
+            this.ReiseZeit.ReadOnly = true;
+            this.ReiseZeit.Width = 110;
+            // 
+            // AbfahrtsZeit
+            // 
+            this.AbfahrtsZeit.DataPropertyName = "Departure";
+            this.AbfahrtsZeit.HeaderText = "Abfahrts Zeit";
+            this.AbfahrtsZeit.Name = "AbfahrtsZeit";
+            this.AbfahrtsZeit.ReadOnly = true;
+            this.AbfahrtsZeit.Width = 110;
+            // 
+            // AnkunftsZeit
+            // 
+            this.AnkunftsZeit.DataPropertyName = "Arrival";
+            this.AnkunftsZeit.HeaderText = "Ankunfts Zeit";
+            this.AnkunftsZeit.Name = "AnkunftsZeit";
+            this.AnkunftsZeit.ReadOnly = true;
+            this.AnkunftsZeit.Width = 110;
             // 
             // toTextBox
             // 
@@ -239,6 +303,10 @@
             this.fromTextBox.Size = new System.Drawing.Size(100, 23);
             this.fromTextBox.TabIndex = 0;
             this.fromTextBox.TextChanged += new System.EventHandler(this.ConnectionSearchTextBoxTextChanged);
+            // 
+            // stationBindingSource1
+            // 
+            this.stationBindingSource1.DataSource = typeof(SwissTransport.Models.Station);
             // 
             // transportBindingSource
             // 
@@ -289,5 +357,11 @@
         private TextBox toTextBox;
         private TextBox fromTextBox;
         private DataGridView conectionBoard;
+        private DataGridViewTextBoxColumn Von;
+        private DataGridViewTextBoxColumn Nach;
+        private DataGridViewTextBoxColumn ReiseZeit;
+        private DataGridViewTextBoxColumn AbfahrtsZeit;
+        private DataGridViewTextBoxColumn AnkunftsZeit;
+        private DateTimePicker connectionDateTimePicker;
     }
 }

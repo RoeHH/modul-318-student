@@ -17,6 +17,7 @@ namespace TransportApp
         public App()
         {
             InitializeComponent();
+            connectionDateTimePicker.Value = DateTime.Now;
         }
 
         private void FoundStationsCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -41,27 +42,25 @@ namespace TransportApp
             {
                 stationBoardHeading.Text = station.Name;
                 var stationBoardListElements = new List<StationBoardListElement>();
-                TransportApi.GetStationBoard(station.Name, station.Id).Entries.ForEach(e => stationBoardListElements.Add(new StationBoardListElement(e)));
+                TransportApi.GetStationBoard(station.Name, station.Id).Entries.ForEach(e => 
+                    stationBoardListElements.Add(new StationBoardListElement(e)));
                 stationBoard.DataSource = stationBoardListElements;
             }
         }
 
         private void ConnectionSearchTextBoxTextChanged(object sender, EventArgs e)
         {
-            if (fromTextBox.Text == "" && toTextBox.Text == "")
-            {
-                var connectionBoardListElement = new List<ConnectionBoardListElement>();
-                TransportApi.GetConnections(fromTextBox.Text, toTextBox.Text).ConnectionList.ForEach(e => connectionBoardListElement.Add(new ConnectionBoardListElement(e)));
-                conectionBoard.DataSource = connectionBoardListElement;
-            }
-            else
-            {
-                _stations = TransportApi.GetStations(fromTextBox.Text ?? toTextBox.Text).StationList;
-                conectionBoard.DataSource = _stations;
-            }
-
-
-
+            var connectionBoardListElement = new List<ConnectionBoardListElement>();
+            if (fromTextBox.Text != "" && toTextBox.Text != "")
+                TransportApi.GetConnections(fromTextBox.Text, toTextBox.Text, connectionDateTimePicker.Checked ? connectionDateTimePicker.Value : DateTime.Now).ConnectionList.ForEach(e => 
+                    connectionBoardListElement.Add(new ConnectionBoardListElement(e)));
+            else if (fromTextBox.Text != "")
+                TransportApi.GetStations(fromTextBox.Text).StationList.ForEach(e =>
+                    connectionBoardListElement.Add(new ConnectionBoardListElement(e.Name, true)));
+            else if (toTextBox.Text != "")
+                TransportApi.GetStations(toTextBox.Text).StationList.ForEach(e =>
+                    connectionBoardListElement.Add(new ConnectionBoardListElement(e.Name, false)));
+            conectionBoard.DataSource = connectionBoardListElement;
         }
 
 

@@ -28,8 +28,8 @@ namespace TransportApp.Models
             Arrival = Convert.ToDateTime(connection.To.Arrival).ToString("dd/MM HH:mm");
             TravelTime = Convert.ToDateTime(connection.Duration.Substring(3)).ToString("HH:mm");
 
-            if (connection.To.Platform != "")
-                FromWithPlatform = connection.From.Station.Name + " (PL:" + connection.To.Platform + ")";
+            if (connection.From.Platform != "")
+                FromWithPlatform = connection.From.Station.Name + " (PL:" + connection.From.Platform + ")";
             else
                 FromWithPlatform = connection.From.Station.Name;
             
@@ -39,6 +39,18 @@ namespace TransportApp.Models
                 ToWithPlatform = connection.To.Station.Name;
         }
 
+        public ConnectionBoardListElement(string station, bool isFrom)
+        {
+            Departure = "";
+            Arrival = "";
+            TravelTime = "";
+            FromWithPlatform = "";
+            ToWithPlatform = "";
+            if (isFrom)
+                FromWithPlatform = station;
+            else
+                ToWithPlatform = station;
+        }
 
     }
 }
