@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GMap.NET.WinForms" Version="2.0.3" />
+    <PackageReference Include="Uno.UI" Version="4.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SwissTransport\SwissTransport.csproj" />
   </ItemGroup>
 

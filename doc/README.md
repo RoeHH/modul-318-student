@@ -39,6 +39,7 @@ für alle Formulare/Dialoge (GUI) , die benötigt werden um die Anforderungen 
  und Status (ob sie umgesetzt wurden oder nicht)
 
 //todo suche nach einer station
+& doppelklick auf map
 
 ### US-2 Prio 1 Verbindungen suchen
 

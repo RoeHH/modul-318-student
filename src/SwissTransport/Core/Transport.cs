@@ -23,6 +23,21 @@
             return this.GetObject<Stations>(uri);
         }
 
+        public Stations GetCloseStations()
+        {
+            var ipUri = new Uri("http://ip-api.com/json");
+            var ipApiResponse = this.GetObject<IpApi>(ipUri);
+
+            var uri = new Uri($"{WebApiHost}locations?x={ipApiResponse.lat}&y={ipApiResponse.lon}");
+            return this.GetObject<Stations>(uri);
+        }
+
+        public Stations GetStations(double latitude, double longitude)
+        {
+            var uri = new Uri($"{WebApiHost}locations?x={latitude}&y={longitude}");
+            return this.GetObject<Stations>(uri);
+        }
+
         public StationBoardRoot GetStationBoard(string station, string id)
         {
             if (string.IsNullOrEmpty(station))
@@ -51,8 +66,17 @@
                 throw new ArgumentNullException(nameof(toStation));
             }
 
-            var uri = new Uri($"{WebApiHost}connections?from={fromStation}&to={toStation}&date={date:yyyy-MM-dd}&time={date:HH:mm}");
+            var uri = new Uri($"{WebApiHost}connections?from={fromStation}&to={toStation}&date={date:yyyy-MM-dd}&time={date:HH:mm}&limit=16");
             return this.GetObject<Connections>(uri);
+        }
+
+        public void GetLocation(ref double latitude, ref double longitude)
+        {
+            var ipUri = new Uri("http://ip-api.com/json");
+            var ipApiResponse = this.GetObject<IpApi>(ipUri);
+
+            latitude = ipApiResponse.lat;
+            longitude = ipApiResponse.lon;
         }
 
         public void Dispose()
