@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.stationTab = new System.Windows.Forms.TabPage();
             this.stationBoardHeading = new System.Windows.Forms.Label();
@@ -54,6 +55,7 @@
             this.fromTextBox = new System.Windows.Forms.TextBox();
             this.stationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.transportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.switchFromTo = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.stationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stationBoard)).BeginInit();
@@ -201,6 +203,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.switchFromTo);
             this.tabPage2.Controls.Add(this.connectionDateTimePicker);
             this.tabPage2.Controls.Add(this.conectionBoard);
             this.tabPage2.Controls.Add(this.toTextBox);
@@ -220,7 +223,7 @@
             this.connectionDateTimePicker.CustomFormat = "HH:mm dd.MM.yy";
             this.connectionDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.connectionDateTimePicker.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.connectionDateTimePicker.Location = new System.Drawing.Point(218, 6);
+            this.connectionDateTimePicker.Location = new System.Drawing.Point(259, 7);
             this.connectionDateTimePicker.Name = "connectionDateTimePicker";
             this.connectionDateTimePicker.ShowCheckBox = true;
             this.connectionDateTimePicker.ShowUpDown = true;
@@ -288,16 +291,16 @@
             // 
             // toTextBox
             // 
-            this.toTextBox.Location = new System.Drawing.Point(112, 6);
+            this.toTextBox.Location = new System.Drawing.Point(144, 7);
             this.toTextBox.Name = "toTextBox";
             this.toTextBox.PlaceholderText = "Nach";
-            this.toTextBox.Size = new System.Drawing.Size(100, 23);
+            this.toTextBox.Size = new System.Drawing.Size(109, 23);
             this.toTextBox.TabIndex = 1;
             this.toTextBox.TextChanged += new System.EventHandler(this.ConnectionSearchTextBoxTextChanged);
             // 
             // fromTextBox
             // 
-            this.fromTextBox.Location = new System.Drawing.Point(6, 6);
+            this.fromTextBox.Location = new System.Drawing.Point(6, 7);
             this.fromTextBox.Name = "fromTextBox";
             this.fromTextBox.PlaceholderText = "Von";
             this.fromTextBox.Size = new System.Drawing.Size(100, 23);
@@ -311,6 +314,18 @@
             // transportBindingSource
             // 
             this.transportBindingSource.DataSource = typeof(SwissTransport.Core.Transport);
+            // 
+            // switchFromTo
+            // 
+            this.switchFromTo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("switchFromTo.BackgroundImage")));
+            this.switchFromTo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchFromTo.FlatAppearance.BorderSize = 0;
+            this.switchFromTo.Location = new System.Drawing.Point(112, 7);
+            this.switchFromTo.Name = "switchFromTo";
+            this.switchFromTo.Size = new System.Drawing.Size(26, 23);
+            this.switchFromTo.TabIndex = 4;
+            this.switchFromTo.UseVisualStyleBackColor = true;
+            this.switchFromTo.Click += new System.EventHandler(this.switchFromTo_Click);
             // 
             // App
             // 
@@ -363,5 +378,6 @@
         private DataGridViewTextBoxColumn AbfahrtsZeit;
         private DataGridViewTextBoxColumn AnkunftsZeit;
         private DateTimePicker connectionDateTimePicker;
+        private Button switchFromTo;
     }
 }

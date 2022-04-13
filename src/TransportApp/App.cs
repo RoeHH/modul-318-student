@@ -63,6 +63,9 @@ namespace TransportApp
             conectionBoard.DataSource = connectionBoardListElement;
         }
 
-
+        private void switchFromTo_Click(object sender, EventArgs e)
+        {
+            (toTextBox.Text, fromTextBox.Text) = (fromTextBox.Text, toTextBox.Text);
+        }
     }
 }   
