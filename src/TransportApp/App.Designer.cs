@@ -55,12 +55,12 @@
             this.Departure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stationSearchBox = new System.Windows.Forms.TextBox();
             this.foundStations = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.showBoard = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.map = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.location = new System.Windows.Forms.TabPage();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.showBoard = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.map = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.stationBoardBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stationBindingSource1)).BeginInit();
@@ -150,6 +150,7 @@
             this.conectionBoard.RowTemplate.Height = 25;
             this.conectionBoard.Size = new System.Drawing.Size(746, 504);
             this.conectionBoard.TabIndex = 2;
+            this.conectionBoard.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.conectionBoard_CellContentClick);
             // 
             // Von
             // 
@@ -193,6 +194,7 @@
             // 
             // Mailen
             // 
+            this.Mailen.ActiveLinkColor = System.Drawing.Color.MediumBlue;
             this.Mailen.DataPropertyName = "link";
             this.Mailen.HeaderText = "Mailen";
             this.Mailen.Name = "Mailen";
@@ -200,6 +202,7 @@
             this.Mailen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Mailen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Mailen.Text = "Send";
+            this.Mailen.ToolTipText = "Send Mail";
             // 
             // toTextBox
             // 
@@ -326,35 +329,6 @@
             this.foundStations.TabIndex = 0;
             this.foundStations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FoundStationsCellContentClick);
             // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.nameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // showBoard
-            // 
-            this.showBoard.DataPropertyName = "Id";
-            this.showBoard.HeaderText = "Abfahrtstafel";
-            this.showBoard.Name = "showBoard";
-            this.showBoard.ReadOnly = true;
-            this.showBoard.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.showBoard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.showBoard.Text = "Anzeigen";
-            this.showBoard.UseColumnTextForButtonValue = true;
-            // 
-            // map
-            // 
-            this.map.HeaderText = "Karte";
-            this.map.Name = "map";
-            this.map.ReadOnly = true;
-            this.map.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.map.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.map.Text = "Anzeigen";
-            // 
             // tabControl
             // 
             this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -411,6 +385,36 @@
             this.gMapControl1.Zoom = 0D;
             this.gMapControl1.Load += new System.EventHandler(this.gMapControl1_Load);
             this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OnMapClick);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.nameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // showBoard
+            // 
+            this.showBoard.DataPropertyName = "Id";
+            this.showBoard.HeaderText = "Abfahrtstafel";
+            this.showBoard.Name = "showBoard";
+            this.showBoard.ReadOnly = true;
+            this.showBoard.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.showBoard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.showBoard.Text = "Anzeigen";
+            this.showBoard.UseColumnTextForButtonValue = true;
+            // 
+            // map
+            // 
+            this.map.HeaderText = "Karte";
+            this.map.Name = "map";
+            this.map.ReadOnly = true;
+            this.map.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.map.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.map.Text = "Anzeigen";
+            this.map.UseColumnTextForButtonValue = true;
             // 
             // App
             // 

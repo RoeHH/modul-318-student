@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 using SwissTransport.Core;
 using SwissTransport.Models;
@@ -41,7 +43,11 @@ namespace TransportApp
 
         private void FoundStationsCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 1 && e.RowIndex >= 0)
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                stationSearchBox.Text = _stations[e.RowIndex].Name;
+            }
+            else if (e.ColumnIndex == 1 && e.RowIndex >= 0)
             {
                 UpdateStationBoard(_stations[e.RowIndex]);
             }
@@ -166,5 +172,23 @@ namespace TransportApp
             }
             gMapControl1.Overlays.Add(markersOverlay);
         }
-    }
+
+        private void conectionBoard_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0)
+            {
+                fromTextBox.Text = conectionBoard.Rows[e.RowIndex].Cells[3].Value.ToString();
+            }
+            else if (e.ColumnIndex == 4 && e.RowIndex >= 0)
+            {
+                toTextBox.Text = conectionBoard.Rows[e.RowIndex].Cells[4].Value.ToString();
+            }
+            else if (e.ColumnIndex == 5 && e.RowIndex >= 0)
+            {
+                //Funktioniert noch nicht :(
+                //ProcessStartInfo sInfo = new ProcessStartInfo(conectionBoard.Rows[e.RowIndex].Cells[5].Value.ToString());
+                //Process.Start(sInfo);
+            }
+        }
+        }
 }   

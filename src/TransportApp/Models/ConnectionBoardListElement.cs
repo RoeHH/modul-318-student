@@ -21,7 +21,7 @@ namespace TransportApp.Models
         
         public string ToWithPlatform { get; private set; }
 
-        public string Link { get; private set; }
+        public Uri Link { get; private set; }
 
 
         public ConnectionBoardListElement(Connection connection)
@@ -29,7 +29,7 @@ namespace TransportApp.Models
             Departure = Convert.ToDateTime(connection.From.Departure).ToString("dd/MM HH:mm");
             Arrival = Convert.ToDateTime(connection.To.Arrival).ToString("dd/MM HH:mm");
             TravelTime = Convert.ToDateTime(connection.Duration.Substring(3)).ToString("HH:mm");
-            Link = "https://haha.ch"; //"mailto:adress@domain.xx?subject=TransportApp&body=" + connection.From.Station.Name + " - " + connection.To.Station.Name + " " + Departure + " - " + Arrival;
+            Link = new Uri("mailto:adress@domain.xx?subject=TransportApp&body=" + connection.From.Station.Name + " - " + connection.To.Station.Name + " " + Departure + " - " + Arrival);
             
             if (connection.From.Platform != "")
                 FromWithPlatform = connection.From.Station.Name + " (PL:" + connection.From.Platform + ")";
@@ -49,7 +49,7 @@ namespace TransportApp.Models
             TravelTime = "";
             FromWithPlatform = "";
             ToWithPlatform = "";
-            Link = "";
+            Link = new Uri("https://m318.roeh.ch/");
             if (isFrom)
                 FromWithPlatform = station;
             else
