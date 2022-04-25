@@ -1,6 +1,6 @@
 # Einleitung
 
-Die Firma SteamVac AG gab mir einem Selbständigen Entwickler die Aufgabe eine Software zu entwickeln welche ihren Aussendienst Mittarbeiter eine Möglichkeit bietet öv-Reisen in der Schweiz zu planen, mehr zu den Anforderungen im Kapitel der User Storys.
+Die Firma SteamVac AG gab mir einem Selbständigen Entwickler die Aufgabe eine Software zu entwickeln welche ihren Aussendienst Mittarbeiter eine Möglichkeit bietet öv-Reisen in der Schweiz zu planen, mehr zu den Anforderungen im Kapitel der [User Storys](user-storys/).
 
 ### Zweck dieses Dokuments
 
