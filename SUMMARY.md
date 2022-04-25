@@ -2,4 +2,5 @@
 
 * [modul-318-Student](README.md)
 * [Dokumentation](doc/README.md)
-* [Page 1](page-1.md)
+  * [Einleitung](doc/einleitung.md)
+  * [Bekannte Fehler und Bugs](doc/bekannte-fehler-und-bugs.md)
