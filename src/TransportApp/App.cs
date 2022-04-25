@@ -116,7 +116,7 @@ namespace TransportApp
             foundStations.DataSource = _stations;
         }
 
-        private void gMapControl1_Load(object sender, EventArgs e)
+        private void GMapControl1Load(object sender, EventArgs e)
         {
             UpdateLocation();
             gMapControl1.Position = new PointLatLng(Latitude, Longitude);
@@ -146,17 +146,7 @@ namespace TransportApp
             TransportApi.GetLocation(ref Latitude,ref Longitude);
         }
 
-        private void App_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void stationBoard_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        private void TabControlSelected(object sender, TabControlEventArgs e)
         {
             var closeStations = TransportApi.GetCloseStations().StationList;
 
@@ -173,7 +163,7 @@ namespace TransportApp
             gMapControl1.Overlays.Add(markersOverlay);
         }
 
-        private void conectionBoard_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ConectionBoardCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 3 && e.RowIndex >= 0)
             {

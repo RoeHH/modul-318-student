@@ -55,12 +55,12 @@
             this.Departure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stationSearchBox = new System.Windows.Forms.TextBox();
             this.foundStations = new System.Windows.Forms.DataGridView();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.location = new System.Windows.Forms.TabPage();
-            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.showBoard = new System.Windows.Forms.DataGridViewButtonColumn();
             this.map = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.location = new System.Windows.Forms.TabPage();
+            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             ((System.ComponentModel.ISupportInitialize)(this.stationBoardBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stationBindingSource1)).BeginInit();
@@ -131,6 +131,7 @@
             this.connectionDateTimePicker.Size = new System.Drawing.Size(200, 23);
             this.connectionDateTimePicker.TabIndex = 3;
             this.connectionDateTimePicker.Value = new System.DateTime(2022, 4, 13, 0, 0, 0, 0);
+            this.connectionDateTimePicker.ValueChanged += new System.EventHandler(this.ConnectionSearchTextBoxTextChanged);
             // 
             // conectionBoard
             // 
@@ -150,7 +151,7 @@
             this.conectionBoard.RowTemplate.Height = 25;
             this.conectionBoard.Size = new System.Drawing.Size(746, 504);
             this.conectionBoard.TabIndex = 2;
-            this.conectionBoard.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.conectionBoard_CellContentClick);
+            this.conectionBoard.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConectionBoardCellContentClick);
             // 
             // Von
             // 
@@ -276,7 +277,6 @@
             this.stationBoard.RowTemplate.Height = 25;
             this.stationBoard.Size = new System.Drawing.Size(343, 529);
             this.stationBoard.TabIndex = 3;
-            this.stationBoard.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.stationBoard_CellContentClick);
             // 
             // To
             // 
@@ -329,6 +329,36 @@
             this.foundStations.TabIndex = 0;
             this.foundStations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FoundStationsCellContentClick);
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.nameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // showBoard
+            // 
+            this.showBoard.DataPropertyName = "Id";
+            this.showBoard.HeaderText = "Abfahrtstafel";
+            this.showBoard.Name = "showBoard";
+            this.showBoard.ReadOnly = true;
+            this.showBoard.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.showBoard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.showBoard.Text = "Anzeigen";
+            this.showBoard.UseColumnTextForButtonValue = true;
+            // 
+            // map
+            // 
+            this.map.HeaderText = "Karte";
+            this.map.Name = "map";
+            this.map.ReadOnly = true;
+            this.map.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.map.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.map.Text = "Anzeigen";
+            this.map.UseColumnTextForButtonValue = true;
+            // 
             // tabControl
             // 
             this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -342,7 +372,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(766, 485);
             this.tabControl.TabIndex = 0;
-            this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
+            this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControlSelected);
             // 
             // location
             // 
@@ -383,38 +413,8 @@
             this.gMapControl1.Size = new System.Drawing.Size(830, 461);
             this.gMapControl1.TabIndex = 0;
             this.gMapControl1.Zoom = 0D;
-            this.gMapControl1.Load += new System.EventHandler(this.gMapControl1_Load);
+            this.gMapControl1.Load += new System.EventHandler(this.GMapControl1Load);
             this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OnMapClick);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.nameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // showBoard
-            // 
-            this.showBoard.DataPropertyName = "Id";
-            this.showBoard.HeaderText = "Abfahrtstafel";
-            this.showBoard.Name = "showBoard";
-            this.showBoard.ReadOnly = true;
-            this.showBoard.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.showBoard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.showBoard.Text = "Anzeigen";
-            this.showBoard.UseColumnTextForButtonValue = true;
-            // 
-            // map
-            // 
-            this.map.HeaderText = "Karte";
-            this.map.Name = "map";
-            this.map.ReadOnly = true;
-            this.map.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.map.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.map.Text = "Anzeigen";
-            this.map.UseColumnTextForButtonValue = true;
             // 
             // App
             // 
@@ -424,7 +424,6 @@
             this.Controls.Add(this.tabControl);
             this.Name = "App";
             this.Text = "Transportapp";
-            this.Load += new System.EventHandler(this.App_Load);
             ((System.ComponentModel.ISupportInitialize)(this.stationBoardBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stationBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stationBindingSource1)).EndInit();
