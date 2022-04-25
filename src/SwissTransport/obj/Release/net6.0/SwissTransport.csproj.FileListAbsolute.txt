@@ -1,0 +1,12 @@
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\bin\Release\net6.0\SwissTransport.deps.json
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\bin\Release\net6.0\SwissTransport.dll
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\bin\Release\net6.0\SwissTransport.pdb
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\obj\Release\net6.0\SwissTransport.csproj.AssemblyReference.cache
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\obj\Release\net6.0\SwissTransport.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\obj\Release\net6.0\SwissTransport.AssemblyInfoInputs.cache
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\obj\Release\net6.0\SwissTransport.AssemblyInfo.cs
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\obj\Release\net6.0\SwissTransport.csproj.CoreCompileInputs.cache
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\obj\Release\net6.0\SwissTransport.dll
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\obj\Release\net6.0\refint\SwissTransport.dll
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\obj\Release\net6.0\SwissTransport.pdb
+C:\Users\r\Documents\git\modul-318-student\src\SwissTransport\obj\Release\net6.0\ref\SwissTransport.dll

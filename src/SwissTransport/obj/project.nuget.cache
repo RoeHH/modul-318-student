@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "dtcfiyRlZpBG48rUjpRRclhIQkqXEdkuA509j/S+jMMeJdbQgchdgbPU5FwXeMRCEu4u7/jWfjY4EGiL5I724A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\r\\Documents\\git\\modul-318-student\\src\\SwissTransport\\SwissTransport.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\r\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
+    "C:\\Users\\r\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\r\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
+  "logs": []
+}
