@@ -45,6 +45,20 @@ namespace TransportApp
             {
                 UpdateStationBoard(_stations[e.RowIndex]);
             }
+            else if (e.ColumnIndex == 2 && e.RowIndex >= 0)
+            {
+                tabControl.SelectedIndex = 2;
+                if (_stations[e.RowIndex].Coordinate.XCoordinate == null ||
+                    _stations[e.RowIndex].Coordinate.YCoordinate == null)
+                {
+                    return;
+                }
+                GMapOverlay markersOverlay = new GMapOverlay("station");
+                GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(_stations[e.RowIndex].Coordinate.XCoordinate.Value, _stations[e.RowIndex].Coordinate.XCoordinate.Value), GMarkerGoogleType.red);
+                markersOverlay.Markers.Add(marker);
+                gMapControl1.Overlays.Add(markersOverlay);
+                
+            }
         }
 
         private void StationSearchBoxTextChanged(object sender, EventArgs e)
@@ -57,14 +71,16 @@ namespace TransportApp
 
         private void UpdateStationBoard(Station station)
         {
-            if(station.Name != null && station.Id != null)
+            if (station.Name == null || station.Id == null)
             {
-                stationBoardHeading.Text = station.Name;
-                var stationBoardListElements = new List<StationBoardListElement>();
-                TransportApi.GetStationBoard(station.Name, station.Id).Entries.ForEach(e => 
-                    stationBoardListElements.Add(new StationBoardListElement(e)));
-                stationBoard.DataSource = stationBoardListElements;
+                return;
             }
+            stationBoardHeading.Text = station.Name;
+            var stationBoardListElements = new List<StationBoardListElement>();
+            TransportApi.GetStationBoard(station.Name, station.Id).Entries.ForEach(e => 
+                stationBoardListElements.Add(new StationBoardListElement(e)));
+            stationBoard.DataSource = stationBoardListElements;
+            
         }
 
         private void ConnectionSearchTextBoxTextChanged(object sender, EventArgs e)
@@ -100,29 +116,22 @@ namespace TransportApp
             gMapControl1.Position = new PointLatLng(Latitude, Longitude);
 
             GMapOverlay markersOverlay = new GMapOverlay("user");
-            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(Latitude, Longitude), GMarkerGoogleType.red);
+            GMarkerCross marker = new GMarkerCross(new PointLatLng(Latitude, Longitude));
             markersOverlay.Markers.Add(marker);
             gMapControl1.Overlays.Add(markersOverlay);
         }
 
-        private void gMapControl1_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void OnMapClick(object sender, MouseEventArgs e)
         {
-            if (((GMapControl)sender).IsMouseOverMarker)
+            var point = gMapControl1.FromLocalToLatLng(e.X, e.Y);
+            var station = TransportApi.GetStations(point.Lat, point.Lng).StationList;
+            station.RemoveAt(0);
+            if (station.Count > 0)
             {
-                var point = gMapControl1.FromLocalToLatLng(e.X, e.Y);
-                var station = TransportApi.GetStations(point.Lat, point.Lng).StationList;
-                if (station.Count > 0)
-                {
-                    tabControl.SelectedTab = stationTab;
-                    stationSearchBox.Text = station[0].Name;
-                    _stations = station;
-                    foundStations.DataSource = _stations;
-                }
+                tabControl.SelectedTab = stationTab;
+                stationSearchBox.Text = station[0].Name;
+                _stations = station;
+                foundStations.DataSource = _stations;
             }
         }
 
@@ -139,6 +148,23 @@ namespace TransportApp
         private void stationBoard_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            var closeStations = TransportApi.GetCloseStations().StationList;
+
+            GMapOverlay markersOverlay = new GMapOverlay("stations");
+            foreach (var station in closeStations)
+            {
+                if (station.Coordinate.XCoordinate == null || station.Coordinate.YCoordinate == null)
+                {
+                    continue;
+                }
+                GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(station.Coordinate.XCoordinate.Value, station.Coordinate.XCoordinate.Value), GMarkerGoogleType.red);
+                markersOverlay.Markers.Add(marker);
+            }
+            gMapControl1.Overlays.Add(markersOverlay);
         }
     }
 }   

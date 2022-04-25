@@ -55,21 +55,38 @@ Aktivitätsdiagramm:
 
 ``Als User möchte nach einer Station suchen können, um die Aktuellen Abfahrtstafel zu sehen.``
 
+Abnahmekriterien:
+
+- Die Abfahrtstafel soll mindestens 4 momentanen Verbindungen von dieser Station weg anzeigen  
+
 ### US-4 Prio-2 Autovervollständigung
 
 ``Als User möchte ich bei der suche nach Stationen eine Autovervollständigung bekommen, um die suche zu erleichtern.``
+
+Abnahmekriterien:
+
+- Beim suchen der Stationen sollen sich die Ergebnisse dauernd erneuern um dem Benutzer Vorschläge zu geben.
+- Wenn der Benutzer auf den Namen einer Station klickt soll dieser als Wert in der Suche übernommen werden. TODO%%%
 
 ### US-5 Prio-2 Verbindungen zu einer Zeit
 
 ``Als User möchte ich bei der suche einen Zeitpunkt mitgeben können, um die suche auf einen anderen Zeitpunkt als den momentanen zu legen.``
 
+Abnahmekriterien:
+
+- Es soll die Möglichkeit geben einen Zeitpunkt auszuwählen um die nächsten Verbindung nah diesem Zeitpunkt anzuzeigen.
+
 ### US-5 Prio-3  Stationen auf einer Karte
 
-``Als User möchte nach einer Station suchen können, diese auf einer Karte eine Route zu dieser Anzeigen lassen, um mich besser zu orientieren.``
+``Als User möchte nach einer Station suchen können, diese auf einer Karte Anzeigen lassen, um mich besser zu orientieren.``
+
+Abnahmekriterien:
+
+- Wenn der User nach einer Station suct
 
 ### US-6 Prio-3 Nahegelegene Station
 
-``Als User möchte ich die nächste Station auf einer Karte angezeigt bekommen, um die Planung zu erleichtern``
+``Als User möchte ich die nächsten Stationen auf einer Karte angezeigt bekommen, um die Planung zu erleichtern``
 
 ### US-7 Prio-3 Verbindungen Mailen
 

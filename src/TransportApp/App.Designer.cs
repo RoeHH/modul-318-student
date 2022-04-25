@@ -38,6 +38,12 @@
             this.switchFromTo = new System.Windows.Forms.Button();
             this.connectionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.conectionBoard = new System.Windows.Forms.DataGridView();
+            this.Von = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReiseZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AbfahrtsZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AnkunftsZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mailen = new System.Windows.Forms.DataGridViewLinkColumn();
             this.toTextBox = new System.Windows.Forms.TextBox();
             this.fromTextBox = new System.Windows.Forms.TextBox();
             this.stationTab = new System.Windows.Forms.TabPage();
@@ -49,18 +55,12 @@
             this.Departure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stationSearchBox = new System.Windows.Forms.TextBox();
             this.foundStations = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.showBoard = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.map = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.map = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.location = new System.Windows.Forms.TabPage();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
-            this.Von = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReiseZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AbfahrtsZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AnkunftsZeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mailen = new System.Windows.Forms.DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)(this.stationBoardBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stationBindingSource1)).BeginInit();
@@ -150,6 +150,56 @@
             this.conectionBoard.RowTemplate.Height = 25;
             this.conectionBoard.Size = new System.Drawing.Size(746, 504);
             this.conectionBoard.TabIndex = 2;
+            // 
+            // Von
+            // 
+            this.Von.DataPropertyName = "FromWithPlatform";
+            this.Von.HeaderText = "Von";
+            this.Von.Name = "Von";
+            this.Von.ReadOnly = true;
+            this.Von.Width = 110;
+            // 
+            // Nach
+            // 
+            this.Nach.DataPropertyName = "ToWithPlatform";
+            this.Nach.HeaderText = "Nach";
+            this.Nach.Name = "Nach";
+            this.Nach.ReadOnly = true;
+            this.Nach.Width = 110;
+            // 
+            // ReiseZeit
+            // 
+            this.ReiseZeit.DataPropertyName = "TravelTime";
+            this.ReiseZeit.HeaderText = "Reise Zeit";
+            this.ReiseZeit.Name = "ReiseZeit";
+            this.ReiseZeit.ReadOnly = true;
+            this.ReiseZeit.Width = 110;
+            // 
+            // AbfahrtsZeit
+            // 
+            this.AbfahrtsZeit.DataPropertyName = "Departure";
+            this.AbfahrtsZeit.HeaderText = "Abfahrts Zeit";
+            this.AbfahrtsZeit.Name = "AbfahrtsZeit";
+            this.AbfahrtsZeit.ReadOnly = true;
+            this.AbfahrtsZeit.Width = 110;
+            // 
+            // AnkunftsZeit
+            // 
+            this.AnkunftsZeit.DataPropertyName = "Arrival";
+            this.AnkunftsZeit.HeaderText = "Ankunfts Zeit";
+            this.AnkunftsZeit.Name = "AnkunftsZeit";
+            this.AnkunftsZeit.ReadOnly = true;
+            this.AnkunftsZeit.Width = 110;
+            // 
+            // Mailen
+            // 
+            this.Mailen.DataPropertyName = "link";
+            this.Mailen.HeaderText = "Mailen";
+            this.Mailen.Name = "Mailen";
+            this.Mailen.ReadOnly = true;
+            this.Mailen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Mailen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Mailen.Text = "Send";
             // 
             // toTextBox
             // 
@@ -278,12 +328,11 @@
             // 
             // nameDataGridViewTextBoxColumn
             // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.nameDataGridViewTextBoxColumn.Text = "Anzeigen";
             this.nameDataGridViewTextBoxColumn.Width = 150;
             // 
             // showBoard
@@ -302,6 +351,9 @@
             this.map.HeaderText = "Karte";
             this.map.Name = "map";
             this.map.ReadOnly = true;
+            this.map.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.map.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.map.Text = "Anzeigen";
             // 
             // tabControl
             // 
@@ -316,6 +368,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(766, 485);
             this.tabControl.TabIndex = 0;
+            this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
             // 
             // location
             // 
@@ -357,58 +410,7 @@
             this.gMapControl1.TabIndex = 0;
             this.gMapControl1.Zoom = 0D;
             this.gMapControl1.Load += new System.EventHandler(this.gMapControl1_Load);
-            this.gMapControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMapClick);
-            this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gMapControl1_MouseClick);
-            // 
-            // Von
-            // 
-            this.Von.DataPropertyName = "FromWithPlatform";
-            this.Von.HeaderText = "Von";
-            this.Von.Name = "Von";
-            this.Von.ReadOnly = true;
-            this.Von.Width = 110;
-            // 
-            // Nach
-            // 
-            this.Nach.DataPropertyName = "ToWithPlatform";
-            this.Nach.HeaderText = "Nach";
-            this.Nach.Name = "Nach";
-            this.Nach.ReadOnly = true;
-            this.Nach.Width = 110;
-            // 
-            // ReiseZeit
-            // 
-            this.ReiseZeit.DataPropertyName = "TravelTime";
-            this.ReiseZeit.HeaderText = "Reise Zeit";
-            this.ReiseZeit.Name = "ReiseZeit";
-            this.ReiseZeit.ReadOnly = true;
-            this.ReiseZeit.Width = 110;
-            // 
-            // AbfahrtsZeit
-            // 
-            this.AbfahrtsZeit.DataPropertyName = "Departure";
-            this.AbfahrtsZeit.HeaderText = "Abfahrts Zeit";
-            this.AbfahrtsZeit.Name = "AbfahrtsZeit";
-            this.AbfahrtsZeit.ReadOnly = true;
-            this.AbfahrtsZeit.Width = 110;
-            // 
-            // AnkunftsZeit
-            // 
-            this.AnkunftsZeit.DataPropertyName = "Arrival";
-            this.AnkunftsZeit.HeaderText = "Ankunfts Zeit";
-            this.AnkunftsZeit.Name = "AnkunftsZeit";
-            this.AnkunftsZeit.ReadOnly = true;
-            this.AnkunftsZeit.Width = 110;
-            // 
-            // Mailen
-            // 
-            this.Mailen.DataPropertyName = "link";
-            this.Mailen.HeaderText = "Mailen";
-            this.Mailen.Name = "Mailen";
-            this.Mailen.ReadOnly = true;
-            this.Mailen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Mailen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Mailen.Text = "Send";
+            this.gMapControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OnMapClick);
             // 
             // App
             // 
@@ -459,14 +461,14 @@
         private TabControl tabControl;
         private TabPage location;
         private GMap.NET.WindowsForms.GMapControl gMapControl1;
-        private DataGridViewButtonColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewButtonColumn showBoard;
-        private DataGridViewTextBoxColumn map;
         private DataGridViewTextBoxColumn Von;
         private DataGridViewTextBoxColumn Nach;
         private DataGridViewTextBoxColumn ReiseZeit;
         private DataGridViewTextBoxColumn AbfahrtsZeit;
         private DataGridViewTextBoxColumn AnkunftsZeit;
         private DataGridViewLinkColumn Mailen;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewButtonColumn showBoard;
+        private DataGridViewButtonColumn map;
     }
 }
