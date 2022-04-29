@@ -2,6 +2,6 @@
 
 Hoi
 
-Für doku gang doch uf [m318.roeh.ch](https://m318.roeh.ch)
+Für doku gang doch uf [https://doc.roeh.ch/v/m318/](https://doc.roeh.ch/v/m318/)
 
 Have Fun!
